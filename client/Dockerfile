@@ -1,7 +1,10 @@
-FROM python:3.10-slim
+FROM python:3.9-slim-buster
 
-# ###
-#
-# 다음 주석을 지우고 docker 파일을 완성하자.
-#
-# ###
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+CMD ["python", "run_client.py"]
